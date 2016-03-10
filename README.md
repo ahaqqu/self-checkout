@@ -1,2 +1,2 @@
 # self-checkout
-Self Checkout Machine for TDD kata
+Self Checkout Machine - TDD Kata
