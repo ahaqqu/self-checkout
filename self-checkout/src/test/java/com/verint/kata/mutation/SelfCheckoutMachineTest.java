@@ -281,6 +281,17 @@ public class SelfCheckoutMachineTest {
     }
 
     @Test
+    public void testPayWithCreditCardNotAccepted() {
+        String creditNumber = "123";
+        machine.scanProduct("ABC0001");
+
+        when(ccValidator.validate(creditNumber)).thenReturn(false);
+        machine.payWithCreditCard(creditNumber);
+
+        assertFalse(machine.isCheckoutCompleted());
+    }
+
+    @Test
     public void testPayWithCreditCardNotAcceptedThenUseGiftCard() throws Exception {
         String creditNumber = "123";
         machine.scanProduct("ABC0001");
