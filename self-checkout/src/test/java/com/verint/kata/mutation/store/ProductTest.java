@@ -29,4 +29,5 @@ public class ProductTest {
         assertEquals(10000D, product.getPrice(), 0.001);
     }
 
+    //I'm new feature
 }
