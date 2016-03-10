@@ -28,6 +28,5 @@ public class ProductTest {
     public void testProductPrice() {
         assertEquals(10000D, product.getPrice(), 0.001);
     }
-
-    //I'm new feature
+    //Experiment branch
 }
