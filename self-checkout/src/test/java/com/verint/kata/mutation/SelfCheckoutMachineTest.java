@@ -302,33 +302,4 @@ public class SelfCheckoutMachineTest {
         assertEquals(d1, d2, 0.001);
     }
 
-    // @Test
-    // public void testAddValidMultpleGiftCardsAndCashThenPrintReceipt() {
-    // machine.scanProduct("ABC0001");
-    // machine.scanProduct("ABC0001");
-    // machine.scanProduct("ABC0001");
-    // machine.scanProduct("ABC0001");
-    // machine.scanProduct("ABC0002");
-    //
-    // machine.addGiftCard("987ZYX");
-    // machine.addGiftCard("987PIS");
-    // machine.payWithCash(10000);
-    //
-    // assertDoubleEquals(26000, machine.getCurrentTotal());
-    // assertDoubleEquals(30000, machine.getCashTotal());
-    // assertDoubleEquals(4000, machine.getChange());
-    // assertTrue(machine.isCheckoutCompleted());
-    //
-    // machine.printReceipt();
-    // String expectedReceipt = "ABC0001 | 4 | 5000 | 20000\n" +
-    // "ABC0002 | 1 | 6000 | 6000\n" +
-    // "Total: 16000\n" +
-    // "\n" +
-    // "Gift Cards:\n" +
-    // "987ZYX | 10000\n" +
-    // "987PIS | 10000\n" +
-    // "Cash: 10000\n" +
-    // "Total payment: 30000\n" +
-    // "Changes: 4000";
-    // }
 }
