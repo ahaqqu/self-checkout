@@ -279,7 +279,7 @@ public class SelfCheckoutMachineTest {
 
         assertTrue(machine.isCheckoutCompleted());
     }
-
+  
     @Test
     public void testPayWithCreditCardNotAccepted() {
         String creditNumber = "123";
