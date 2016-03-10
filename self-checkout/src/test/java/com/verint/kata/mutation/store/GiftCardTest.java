@@ -12,13 +12,13 @@ import org.junit.Test;
 
 public class GiftCardTest {
 
-    private GiftCard giftCard;
-
-    @Before
-    public void setup() {
-        giftCard = new GiftCard("code", 10000D, new Date(1000));
-    }
-
+	private GiftCard giftCard;
+	
+	@Before
+	public void setup() {
+		giftCard = new GiftCard("code", 10000D, new Date(1000));
+	}
+	
     @Test
     public void testGiftCardId() {
         assertEquals("code", giftCard.getCode());
@@ -36,19 +36,19 @@ public class GiftCardTest {
 
     @Test
     public void testGiftCardIsExpired() {
-        Calendar c = Calendar.getInstance();
-        c.setTime(new Date());
-        c.add(Calendar.DATE, -1);
-
+    	Calendar c = Calendar.getInstance(); 
+    	c.setTime(new Date()); 
+    	c.add(Calendar.DATE, -1);
+    	
         GiftCard card = new GiftCard(null, 0, c.getTime());
         assertTrue(card.isExpired());
     }
 
     @Test
     public void testGiftCardTodayIsNotExpired() {
-        Calendar c = Calendar.getInstance();
-        c.setTime(new Date());
-
+    	Calendar c = Calendar.getInstance(); 
+    	c.setTime(new Date());
+    	
         GiftCard card = new GiftCard(null, 0, c.getTime());
         assertFalse(card.isExpired());
     }
