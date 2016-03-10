@@ -7,15 +7,15 @@ import org.junit.Test;
 
 public class ProductTest {
 
-	private Product product;
+    private Product product;
 
-	@Before
-	public void setup() {
-		product = new Product("id", "name", 10000D);
-	}
-	
+    @Before
+    public void setup() {
+        product = new Product("id", "name", 10000D);
+    }
+
     @Test
-    public void testProductId() { 
+    public void testProductId() {
         assertEquals("id", product.getId());
     }
 

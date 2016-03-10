@@ -22,59 +22,59 @@ public class SelfCheckoutMachine {
 
     private Map<String, GiftCard> availableGiftCardMap = new HashMap<String, GiftCard>();
     private ICreditCardValidator ccValidator;
-    
+
     public SelfCheckoutMachine(ICreditCardValidator ccValidator) {
-    	availableGiftCardMap = StoreBuilder.getGiftCardMap();
-    	this.ccValidator = ccValidator;
+        availableGiftCardMap = StoreBuilder.getGiftCardMap();
+        this.ccValidator = ccValidator;
     }
 
     public Double scanProduct(String id) {
-    	Product product = StoreBuilder.getProductMap().get(id);
-    	if(product != null) {
-    		shoppingCart.add(product);
-    		Double price = product.getPrice();
-    		currentTotal += price;
-    		return price;
-    	}
+        Product product = StoreBuilder.getProductMap().get(id);
+        if (product != null) {
+            shoppingCart.add(product);
+            Double price = product.getPrice();
+            currentTotal += price;
+            return price;
+        }
         return null;
     }
 
     public GiftCard.GIFT_CARD_STATE addGiftCard(String code) throws Exception {
-    	if(isCheckoutCompleted()) {
-    		throw new Exception("Checkout Completed");
-    	}
-    	
-    	GiftCard giftCard = availableGiftCardMap.get(code);
-    	if(giftCard == null) {
-    		return GIFT_CARD_STATE.INVALID;
-    	}
-    	if(giftCard.isExpired()) {
-    		return GIFT_CARD_STATE.EXPIRED;
-    	}
-    	
-    	cashTotal += giftCard.getValue();
-    	if(cashTotal >= currentTotal) {
-    		checkoutCompleted = true;
-    	}
-    	availableGiftCardMap.remove(code);
+        if (isCheckoutCompleted()) {
+            throw new Exception("Checkout Completed");
+        }
+
+        GiftCard giftCard = availableGiftCardMap.get(code);
+        if (giftCard == null) {
+            return GIFT_CARD_STATE.INVALID;
+        }
+        if (giftCard.isExpired()) {
+            return GIFT_CARD_STATE.EXPIRED;
+        }
+
+        cashTotal += giftCard.getValue();
+        if (cashTotal >= currentTotal) {
+            checkoutCompleted = true;
+        }
+        availableGiftCardMap.remove(code);
         return GIFT_CARD_STATE.ACCEPTABLE;
     }
 
     public void payWithCash(double value) throws Exception {
-    	if(isCheckoutCompleted()) {
-    		throw new Exception("Checkout Completed");
-    	}
-    	
+        if (isCheckoutCompleted()) {
+            throw new Exception("Checkout Completed");
+        }
+
         cashTotal += value;
-        if(cashTotal >= currentTotal) {
-        	checkoutCompleted = true;
-        	change = cashTotal - currentTotal;
+        if (cashTotal >= currentTotal) {
+            checkoutCompleted = true;
+            change = cashTotal - currentTotal;
         }
     }
 
     public void payWithCreditCard(String cardNumber) {
-        if(ccValidator.validate(cardNumber)) {
-        	checkoutCompleted = true;
+        if (ccValidator.validate(cardNumber)) {
+            checkoutCompleted = true;
         }
     }
 
@@ -85,7 +85,7 @@ public class SelfCheckoutMachine {
     public Double getCurrentTotal() {
         return currentTotal;
     }
-    
+
     public Double getCashTotal() {
         return cashTotal;
     }

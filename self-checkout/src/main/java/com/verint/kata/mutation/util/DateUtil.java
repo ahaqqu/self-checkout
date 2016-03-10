@@ -9,10 +9,10 @@ public class DateUtil {
     public static Date createDate(String dateInString) {
         Date date = null;
         try {
-        	SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+            SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
             date = formatter.parse(dateInString);
         } catch (ParseException e) {
-//            e.printStackTrace();
+            // e.printStackTrace();
         }
         return date;
     }
